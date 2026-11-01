@@ -192,7 +192,7 @@ def main():
         read_timeout=30.0
     )
 
-    app = app = (
+    app = (
     ApplicationBuilder()
     .token("9203764858:AAGWQL9gZncmHFTNDXW-Nrw8gHp5mQq7q5U")
     .read_timeout(30)
