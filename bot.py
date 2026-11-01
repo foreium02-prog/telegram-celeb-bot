@@ -5,6 +5,7 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, BotComm
 from telegram.request import HTTPXRequest
 from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandler, ContextTypes
 
+
 # Set up logging to monitor output in console
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -184,14 +185,22 @@ async def post_init(application: ApplicationBuilder):
     await application.bot.set_my_commands(commands)
 
 def main():
-    BOT_TOKEN = "9203764858:AAHCoVTLA9IeukdpocpIUp37-hdt9Lzklz4"
+    BOT_TOKEN = "9203764858:AAGWQL9gZncmHFTNDXW-Nrw8gHp5mQq7q5U"
 
     custom_request = HTTPXRequest(
         connect_timeout=30.0,
         read_timeout=30.0
     )
 
-    app = ApplicationBuilder().token(BOT_TOKEN).request(custom_request).post_init(post_init).build()
+    app = app = (
+    ApplicationBuilder()
+    .token("9203764858:AAGWQL9gZncmHFTNDXW-Nrw8gHp5mQq7q5U")
+    .read_timeout(30)
+    .write_timeout(30)
+    .connect_timeout(30)
+    .pool_timeout(30)
+    .build()
+)
     
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(button_handler))
